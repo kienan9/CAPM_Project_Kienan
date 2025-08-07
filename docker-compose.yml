@@ -1,0 +1,31 @@
+version: '3'
+services:
+  development:
+    stdin_open: true
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3000:3000'
+    volumes:
+      - /app/node_modules
+      - .:/app
+      
+  test:
+    stdin_open: true
+    environment:
+      - NODE_ENV=test
+      - CHOKIDAR_USEPOLLING=true
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    ports:
+      - '3001:3000'
+    volumes:
+      - /app/node_modules
+      - .:/app
+    
+
