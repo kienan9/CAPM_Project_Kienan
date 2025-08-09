@@ -2,27 +2,24 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+function TestApp() {
 
-function App() {
-
-  // Initialize state with value from localStorage
+  // Separate visit counter for test mode
   const [visits] = useState(() => {
-    const savedVisits = localStorage.getItem('visits');
+    const savedVisits = localStorage.getItem('test_visits');
     return savedVisits ? parseInt(savedVisits, 10) + 1 : 1;
   });
 
-  // Update localStorage whenever visits state changes
   useEffect(() => {
-    localStorage.setItem('visits', visits);
+    localStorage.setItem('test_visits', visits);
   }, [visits]);
 
   return (
     <div className="App">
       <header className="App-header">
-        {/* <h1>This is the development server</h1> */}
+        <h1>This is the TEST server</h1>
         <img src={logo} className="App-logo" alt="logo" />
-        <p>EGL307 Project</p>
-        <p>Number of visits: {visits}</p>
+        <p>Test server visit count: {visits}</p>
         <p>members: Kienan and JingBo</p>
         <a
           className="App-link"
@@ -30,11 +27,10 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Solved OpenSSL problem related to React. 
         </a>
       </header>
     </div>
   );
 }
 
-export default App;
+export default TestApp;

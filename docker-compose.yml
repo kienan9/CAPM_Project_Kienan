@@ -3,7 +3,6 @@ services:
   development:
     stdin_open: true
     environment:
-      - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
     build:
       context: .
@@ -17,7 +16,6 @@ services:
   test:
     stdin_open: true
     environment:
-      - NODE_ENV=test
       - CHOKIDAR_USEPOLLING=true
     build:
       context: .
@@ -28,4 +26,9 @@ services:
       - /app/node_modules
       - .:/app
     
-
+  production:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
